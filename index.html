@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="./style.css">
+    <title>Weather Dashboard</title>
+   
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-content">Weather Dashboard</div>
+    </div>
+    <div class="search-container" >
+        <div class="search-label">Search for city:</div>
+        <input type="text" class="search-input">
+        <button class="search-button"  id="search-button">Search</button>
+    </div>
+    <div id="history"></div>
+    <div class="content-container" id="search-container1">
+        <!-- Content for the first container goes here -->
+        <h2><span id="date"></span><img id="weather-icon"/></h2>
+        <h2>City Search: <span id="city-name"></span></h2>
+        <h2>Temperature: <span id="temperature"></span></h2>
+        <h2>humidity: <span id="humidity"></span></h2>
+        <h2>wind-speed: <span id="wind-speed"></span></h2>
+        
+    </div>
+    <h1>5 Day forecast</h1>
+    <div class="content-container" id="search-container2">
+        <!-- Content for the second container goes here -->
+        <div class="box" id="box-1"></div>
+        
+        <div class="box" id="box-2"></div>
+        <div class="box" id="box-3"></div>
+        <div class="box" id="box-4"></div>
+        <div class="box" id="box-5"></div>
+    </div>
+</body>
+<script
+      src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+      crossorigin="anonymous"
+    ></script>
+<script src="./script.js"></script>
+</html>
+
