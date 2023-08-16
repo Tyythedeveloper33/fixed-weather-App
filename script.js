@@ -41,23 +41,28 @@ async function getWeatherData(city) {
   
   // Function to display 5-day forecast
   function displayForecast(data) {
+    console.log(data)
+    // get data for the next 5 days
+    for(i=0; i< data.list.length; i++){
+      if(data.list[i].dt_txt.includes("12:00:00")){
+        console.log(data.list[i])
+        const date = dayjs(data.list[i].dt * 1000).format('MMM D, YYYY');
+        const iconCode = data.list[i].weather[0].icon;
+        const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+        const temperature = data.list[i].main.temp;
+        const humidity = data.list[i].main.humidity;
+        const windSpeed = data.list[i].wind.speed;
+        console.log(date)
+        console.log(iconCode)
+        console.log(iconUrl)
+        console.log(temperature)
+        console.log(humidity)
+        console.log(windSpeed)
+        //end of helped javascript
+      }
+    }
     
-    // Extract relevant data for the next 5 days from the API response
-    const forecastData = data.list.slice(1, 6);
-  
-    // Update HTML elements to display the 5-day forecast
-    //starting with the firstday
-      forecastData.forEach((item,index) => { 
-      const date = dayjs(item.dt * 1000).format('MMM D, YYYY');
-      const targetDate = dayjs('2023-08-17');
-      const dateDifference = targetDate.diff(date,'second');
-      const newDt = item.dt + dateDifference;
-      const adjustedDate = dayjs(newDt * 1000).format('MMM D, YYYY');
-      const iconCode = item.weather[0].icon;
-      const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
-      const temperature = data.list[6].main.temp;
-      const windSpeed = data.list[6].wind.speed;
-      const humidity = data.list[6].main.humidity;
+     
   // first day of forecast
       document.getElementById(`date-${index + 1}`).textContent = adjustedDate;
       document.getElementById(`weather-icon-${index + 1}`).setAttribute('src', iconUrl);
@@ -68,8 +73,6 @@ async function getWeatherData(city) {
       // second day of forecast
      
      // document.getElementById("search-button").addEventListener('click', handleSearch)
-    });
-   
   }
   
   // Function to handle the search button click
