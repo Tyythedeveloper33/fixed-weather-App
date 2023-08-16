@@ -29,20 +29,6 @@ async function getWeatherData(city) {
     const humidity = data.list[0].main.humidity;
     const windSpeed = data.list[0].wind.speed;
 
-    // --> Let's say we DYNAMICALLY CREATE NEW CONTENT -- //
-   // let dateTitle = document.createElement('h2');
-   // console.log("New Element: ", dateTitle);   // --> <h2></h2>
-   // dateTitle.setAttribute('id', 'date');
-   // console.log("New Element: ", dateTitle);   // --> <h2 id="date"></h2>
-   // dateTitle.textContent = date;
-   // console.log("New Element: ", dateTitle);   // --> <h2 id="date">07/26/23</h2>
-
-    // The element is now CREATED, has ATTRIBUTES, and CONTENT, and anything else we want to add
-    // NOW the NEW ELEMENT has to be PUT ON THE SCREEN!!
-    //let currentContainerDate = document.getElementById('date');
-    //currentContainerDate.appendChild(dateTitle);
-
-
     // Update HTML elements to display the current weather conditions
     document.getElementById('city-name').textContent = cityName;
     document.getElementById('date').textContent = date;
@@ -60,20 +46,27 @@ async function getWeatherData(city) {
     const forecastData = data.list.slice(1, 6);
   
     // Update HTML elements to display the 5-day forecast
-    forecastData.forEach((item, index) => {
+    //starting with the firstday
+      forecastData.forEach((item,index) => { 
       const date = dayjs(item.dt * 1000).format('MMM D, YYYY');
+      const targetDate = dayjs('2023-08-17');
+      const dateDifference = targetDate.diff(date,'second');
+      const newDt = item.dt + dateDifference;
+      const adjustedDate = dayjs(newDt * 1000).format('MMM D, YYYY');
       const iconCode = item.weather[0].icon;
       const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
-      const temperature = item.main.temp;
-      const windSpeed = item.wind.speed;
-      const humidity = item.main.humidity;
-  
-      document.getElementById(`date-${index + 1}`).textContent = date;
+      const temperature = data.list[6].main.temp;
+      const windSpeed = data.list[6].wind.speed;
+      const humidity = data.list[6].main.humidity;
+  // first day of forecast
+      document.getElementById(`date-${index + 1}`).textContent = adjustedDate;
       document.getElementById(`weather-icon-${index + 1}`).setAttribute('src', iconUrl);
-      document.getElementById(`temperature-${index + 1}`).textContent = temperature + '°F';
-      document.getElementById(`wind-speed-${index + 1}`).textContent = windSpeed + ' m/s';
+      document.getElementById(`temperature-${index + 1}`).textContent = temperature + 'F';
+     
+      document.getElementById(`wind-speed-${index + 1}`).textContent = windSpeed + ' mph';
       document.getElementById(`humidity-${index + 1}`).textContent = humidity + '%';
-
+      // second day of forecast
+     
      // document.getElementById("search-button").addEventListener('click', handleSearch)
     });
    
