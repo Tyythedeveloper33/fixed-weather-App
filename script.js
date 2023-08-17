@@ -121,6 +121,7 @@ async function getWeatherData(city) {
     if (!city) {
       alert('Please enter a city name.');
       return;
+       
     }
   
     const weatherData = await getWeatherData(city);
@@ -128,8 +129,11 @@ async function getWeatherData(city) {
       displayCurrentWeather(weatherData);
       displayForecast(weatherData);
       // Store the searched city in localStorage (you can modify the key as needed)
+      
       localStorage.setItem('lastSearchedCity', city);
+      JSON.stringify(city)
       // Update the search history display
+      
       updateSearchHistory();
     }
   }
@@ -138,16 +142,18 @@ async function getWeatherData(city) {
   function updateSearchHistory() {
     const historyContainer = document.getElementById('history');
     historyContainer.innerHTML = '';
-  const lastSearchedCity = localStorage.getItem('lastSearchedCity');
+ 
     // Retrieve the search history from localStorage (you can modify the key as needed)
-    const searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
-  
+     const searchHistory = (localStorage.getItem('lastSearchedCity')) || [];
+    
     searchHistory.forEach((city) => {
+     
       const historyItem = document.createElement('div');
       historyItem.textContent = city;
       historyItem.classList.add('history-item');
       historyItem.addEventListener('click', () => handleHistoryItemClick(city));
       historyContainer.appendChild(historyItem);
+      console.log(city)
     });
   }
   
