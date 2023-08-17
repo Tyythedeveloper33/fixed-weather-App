@@ -138,7 +138,7 @@ async function getWeatherData(city) {
   function updateSearchHistory() {
     const historyContainer = document.getElementById('history');
     historyContainer.innerHTML = '';
-  
+  const lastSearchedCity = localStorage.getItem('lastSearchedCity');
     // Retrieve the search history from localStorage (you can modify the key as needed)
     const searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
   
