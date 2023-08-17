@@ -41,6 +41,7 @@ async function getWeatherData(city) {
   
   // Function to display 5-day forecast
   function displayForecast(data) {
+    let firstDay= true;
     console.log(data)
     // get data for the next 5 days
     for(i=0; i< data.list.length; i++){
@@ -58,21 +59,60 @@ async function getWeatherData(city) {
         console.log(temperature)
         console.log(humidity)
         console.log(windSpeed)
+
         //end of helped javascript
-      }
+        if(firstDay){
+        document.getElementById('box-1').innerHTML = `
+        <div>${date}<div>
+        <img src="${iconUrl}" alt="weather Icon">
+        <div>${temperature}F</div>
+        <br> </br>
+        <div>${humidity}%</div>
+        <div> ${windSpeed}mph</div>
+        `;
+        firstDay= false;
+        
+      }else if (date.includes('Aug 19')){
+        document.getElementById('box-2').innerHTML = `
+        <div>${date}<div>
+        <img src="${iconUrl}" alt="weather Icon">
+        <div>${temperature}F</div>
+        <br> </br>
+        <div>${humidity}%</div>
+        <div> ${windSpeed}mph</div>`
+      }else if (date.includes('Aug 20')){
+        document.getElementById('box-3').innerHTML = `
+        <div>${date}<div>
+        <img src="${iconUrl}" alt="weather Icon">
+        <div>${temperature}F</div>
+        <br> </br>
+        <div>${humidity}%</div>
+        <div> ${windSpeed}mph</div>`
+     
+    }else if (date.includes('Aug 21')){
+      document.getElementById('box-4').innerHTML = `
+      <div>${date}<div>
+      <img src="${iconUrl}" alt="weather Icon">
+      <div>${temperature}F</div>
+      <br> </br>
+      <div>${humidity}%</div>
+      <div> ${windSpeed}mph</div>`
+    }else if (date.includes('Aug 22')){
+      document.getElementById('box-5').innerHTML = `
+      <div>${date}<div>
+      <img src="${iconUrl}" alt="weather Icon">
+      <div>${temperature}F</div>
+      <br> </br>
+      <div>${humidity}%</div>
+      <div> ${windSpeed}mph</div>`
+  }
+}
     }
+     //
     
-     
-  // first day of forecast
-      document.getElementById(`date-${index + 1}`).textContent = adjustedDate;
-      document.getElementById(`weather-icon-${index + 1}`).setAttribute('src', iconUrl);
-      document.getElementById(`temperature-${index + 1}`).textContent = temperature + 'F';
-     
-      document.getElementById(`wind-speed-${index + 1}`).textContent = windSpeed + ' mph';
-      document.getElementById(`humidity-${index + 1}`).textContent = humidity + '%';
-      // second day of forecast
-     
-     // document.getElementById("search-button").addEventListener('click', handleSearch)
+  //
+    
+      document.getElementById("search-button").addEventListener('click', handleSearch)
   }
   
   // Function to handle the search button click
