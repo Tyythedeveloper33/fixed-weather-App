@@ -73,7 +73,7 @@ function displayForecast(data) {
       `;
       firstDay= false;
       
-    }else if (date.includes('Oct 23')){
+    }else if (date.includes('Oct 25')){
       document.getElementById('box-2').innerHTML = `
       <div>${date}<div>
       <img src="${iconUrl}" alt="weather Icon">
@@ -81,7 +81,7 @@ function displayForecast(data) {
       <br> </br>
       <div>${humidity}%</div>
       <div> ${windSpeed}mph</div>`
-    }else if (date.includes('Oct 24')){
+    }else if (date.includes('Oct 26')){
       document.getElementById('box-3').innerHTML = `
       <div>${date}<div>
       <img src="${iconUrl}" alt="weather Icon">
@@ -90,7 +90,7 @@ function displayForecast(data) {
       <div>${humidity}%</div>
       <div> ${windSpeed}mph</div>`
    
-  }else if (date.includes('Oct 25')){
+  }else if (date.includes('Oct 27')){
     document.getElementById('box-4').innerHTML = `
     <div>${date}<div>
     <img src="${iconUrl}" alt="weather Icon">
@@ -98,7 +98,7 @@ function displayForecast(data) {
     <br> </br>
     <div>${humidity}%</div>
     <div> ${windSpeed}mph</div>`
-  }else if (date.includes('Oct 26')){
+  }else if (date.includes('Oct 28')){
     document.getElementById('box-5').innerHTML = `
     <div>${date}<div>
     <img src="${iconUrl}" alt="weather Icon">
